@@ -1,0 +1,137 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.fullscreen-bg {
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #667eea, #764ba2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;    
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+.hero {
+  background: linear-gradient(to right, #667eea, #764ba2);
+  color: white;
+  border-radius: 12px 12px 0 00;
+  padding: 10px 20px;
+  height: 150px;
+  text-align: center;
+  width: 100%;
+  max-width: 1200px; /* Match container width */
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  font-weight: 300;
+}
+
+.container {
+  background-color: white;
+  max-width: 1200px;
+  width: 100%;
+  height: 700px;
+  border-radius: 0 0 12px 12px;
+  padding: 0;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  gap: 0;
+  display: flex;
+  min-height: 600px;
+
+}
+
+.form-sidebar {
+  flex: 1;
+  padding: 30px;
+  border-right: 1px solid #e5e7eb;
+  overflow-y: auto;
+}
+
+.preview-panel {
+  flex: 1;
+  padding: 30px;
+  background-color: #f9fafb;
+}
+
+/* Default: Vertical layout */
+.accordion-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column; /* ⬅️ This makes it vertical */
+  gap: 15px;
+}
+
+/* This makes things VERTICAL (stacked) */
+.input-column {
+  display: flex;
+  flex-direction: column; /* ⬅️ This makes it vertical */
+  gap: 15px;
+}
+
+/* This makes things HORIZONTAL (side by side) */
+.input-row {
+  display: flex;
+  flex-direction: row; /* ⬅️ This makes it horizontal (default) */
+  gap: 15px;
+}
+
+.input-group { 
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  
+}
+
+.input-row input {
+  flex: 1; /* Each input takes equal space */
+}
+
+
+.accordion-item {
+  margin-bottom: 15px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.accordion-header {
+  cursor: pointer;
+  padding: 15px;
+  background-color: #f9fafb;
+  border: none; /* Remove individual border */
+  border-radius: 0; /* Remove individual border-radius */
+  margin-bottom: 0; /* Remove margin */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 500;
+  background: linear-gradient(to right, #d7d8dc, #bfd7ea);
+}
+
+.accordion-header:hover {
+  background: #bfd7ea;
+}
+
+/* Input styling */
+.accordion-content input,
+.accordion-content textarea {
+  padding: 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+  width: 100%;
+}
