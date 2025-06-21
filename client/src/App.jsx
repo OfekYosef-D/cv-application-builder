@@ -1,7 +1,8 @@
 import React from 'react';
 import './styles/styles.css'; // make sure this contains .fullscreen-bg
 import Title from './components/Title';
-import ResumeForm from './components/ResumeForm';
+import ResumeForm from './components/ResumeForm/ResumeForm';
+import ResumePreview from './components/ResumePreview/ResumePreview';
 
 function App() {
   return (
@@ -11,9 +12,9 @@ function App() {
          <div className="form-sidebar">
           <ResumeForm />
         </div>
-        {/*<div className="preview-panel">
+        <div className="form-sidebar">
           <ResumePreview />
-        </div> */}
+        </div>
       </div>
     </div>
   );

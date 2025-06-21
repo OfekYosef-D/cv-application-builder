@@ -7,6 +7,7 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .fullscreen-bg {
@@ -14,13 +15,13 @@ body {
   background: linear-gradient(to bottom right, #667eea, #764ba2);
   display: flex;
   flex-direction: column;
-  align-items: center;    
+  align-items: center;
   padding: 40px;
   box-sizing: border-box;
 }
 
 .hero {
-  background: linear-gradient(to right, #667eea, #764ba2);
+  background: linear-gradient(to right, #4663e4, #764ba2);
   color: white;
   border-radius: 12px 12px 0 00;
   padding: 10px 20px;
@@ -31,13 +32,13 @@ body {
 }
 
 .hero h1 {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
+  font-size: 2.4rem;
+  margin-bottom: 5px;
 }
 
 .hero p {
   font-size: 1.2rem;
-  font-weight: 300;
+  font-weight: 100;
 }
 
 .container {
@@ -51,7 +52,6 @@ body {
   gap: 0;
   display: flex;
   min-height: 600px;
-
 }
 
 .form-sidebar {
@@ -75,6 +75,7 @@ body {
   gap: 15px;
 }
 
+
 /* This makes things VERTICAL (stacked) */
 .input-column {
   display: flex;
@@ -89,23 +90,33 @@ body {
   gap: 15px;
 }
 
-.input-group { 
+.input-group {
   display: flex;
   flex-direction: column;
   gap: 5px;
-  
+  padding-bottom: 10px;;
 }
 
 .input-row input {
   flex: 1; /* Each input takes equal space */
 }
 
+.input-row-spaced {
+  display: flex;
+  gap: 40px; /* ✅ Bigger gap */
+}
+
+.input-row-spaced .input-group {
+  flex: 1;
+}
 
 .accordion-item {
   margin-bottom: 15px;
   border: 1px solid #e5e7eb;
   border-radius: 8px;
   overflow: hidden;
+  -webkit-box-shadow: 1px 0px 5px 3px rgba(0, 0, 0, 0.22);
+  box-shadow: 1px 1px 3px 3px rgba(0, 0, 0, 0.22);
 }
 
 .accordion-header {
@@ -130,8 +141,236 @@ body {
 .accordion-content input,
 .accordion-content textarea {
   padding: 10px;
-  border: 1px solid #d1d5db;
+  border: 1.5px solid #f4ebeb;
   border-radius: 6px;
   font-size: 14px;
   width: 100%;
+}
+
+.accordion-content input:focus,
+.accordion-content textarea:focus {
+  outline: none;
+  border: 2px solid #667eea;
+  border-color: #667eea; /* Focus border color */
+  box-shadow: 0 0 5px rgba(102, 126, 234, 0.5); /* Subtle shadow on focus */
+  transition: border-color 0.4s ease, box-shadow 0.4s ease; /* Smooth transition */
+}
+
+.accordion-content label {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.reuseable-border {
+  border: 2px dashed #e5e7eb;
+  border-radius: 8px; 
+  margin: 10px;
+  padding: 20px;
+}
+
+.form-sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.form-sidebar::-webkit-scrollbar-track {
+  background: transparent; /* Invisible track */
+}
+
+.form-sidebar::-webkit-scrollbar-thumb {
+  background: #d1d5db; /* Light gray */
+  border-radius: 3px;
+  transition: background 0.2s ease;
+}
+
+.form-sidebar::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af; /* Darker on hover */
+}
+
+.default-button {
+  background-color: #667eea;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.default-button:hover {
+  background-color: #5a67d8; /* Darker shade on hover */
+  transform: translateY(-2px); /* Slight lift effect */
+  box-shadow: 0px 0px 15px 5px rgba(11, 99, 222, 0.1); /* Subtle shadow */
+}
+
+
+.pdf-preview-title {
+  background: #3e4f5e;
+  color: white;
+  border-radius: 12px 12px 0 00;
+  margin-top: 10px;
+  padding: 10px;
+  text-align: center;
+  width: 100%;
+  height: auto;
+  max-width: 1200px; /* Match container width */
+}
+
+.pdf-preview-title h3 {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+.pdf-preview-title p {
+  font-size: 0.9rem;
+  font-weight: 100;
+  
+}
+
+.pdf-preview-email {
+  padding: 0px 0px 0px 30px; 
+}
+
+.pdf-preview-location {
+  padding: 0px 10px 0px 0px; 
+}
+
+.pdf-preview-content {
+  padding: 20px;
+  background-color: #f3f4f6; /* Light gray background */
+  border-radius: 8px;
+}
+
+.section-title {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #42a5f5; /* Light border for separation */
+  color: #3e4f5e; /* Darker text for contrast */
+}
+
+.section-content {
+  font-size: 0.7rem;
+  color: #374151; /* Dark gray for readability */
+  line-height: 1.5; /* Improved line height for readability */
+  border-left: 2px solid #e1e4e7;
+  padding-left: 10px;
+}
+
+.section-title-inside {
+  font-size: 0.8rem;
+  color: #000000; /* Darker text for contrast */
+  font-weight: bold; /* Slightly bolder for emphasis */
+  margin-bottom: 3px;
+}
+
+.section-name-inside {
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: #0078D4; /* Darker text for contrast */
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+}
+
+.section-duration {
+  font-size: 0.65rem;
+  color: gray
+}
+
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; /* Space between items */
+  margin-top: 10px;
+}
+
+.skill-tag {
+  background-color: #0078D4;
+  color: white;
+  border-radius: 25px;
+  border: none;
+  padding: 4px 10px;
+  text-align: center;
+  white-space: nowrap;
+  flex-shrink: 0;
+  font-size: 0.6rem;
+}
+
+.download-button {
+  background: linear-gradient(to right, #4663e4, #764ba2);
+}
+
+
+
+/* Tablet styles (768px and below) */
+@media (max-width: 768px) {
+  .fullscreen-bg {
+    padding: 20px; /* Reduce padding on smaller screens */
+  }
+  
+  .hero {
+    height: 120px; /* Reduce hero height */
+    padding: 15px;
+  }
+  
+  .hero h1 {
+    font-size: 2rem; /* Smaller heading */
+  }
+  
+  .hero p {
+    font-size: 1rem; /* Smaller paragraph */
+  }
+  
+  .container {
+    flex-direction: column; /* Stack form and preview vertically */
+    height: auto; /* Let height adjust to content */
+    min-height: auto;
+  }
+  
+  .form-sidebar {
+    border-right: none; /* Remove right border */
+    border-bottom: 1px solid #e5e7eb; /* Add bottom border instead */
+  }
+  
+  .input-row {
+    flex-direction: column; /* Stack inputs vertically on small screens */
+  }
+  
+  .input-row-spaced {
+    flex-direction: column; /* Stack spaced inputs too */
+    gap: 15px; /* Reduce gap */
+  }
+}
+
+/* Mobile styles (480px and below) */
+@media (max-width: 480px) {
+  .fullscreen-bg {
+    padding: 10px;
+  }
+  
+  .hero {
+    height: 100px;
+    padding: 10px;
+  }
+  
+  .hero h1 {
+    font-size: 1.5rem;
+  }
+  
+  .hero p {
+    font-size: 0.9rem;
+  }
+  
+  .form-sidebar,
+  .preview-panel {
+    padding: 15px; /* Reduce padding on mobile */
+  }
+  
+  .accordion-content {
+    padding: 15px; /* Reduce accordion padding */
+  }
+  
+  .accordion-header {
+    padding: 12px; /* Reduce header padding */
+  }
 }
