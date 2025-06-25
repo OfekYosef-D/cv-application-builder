@@ -4,7 +4,6 @@ A modern React-based web application for building professional CVs and resumes w
 
 ![CV Application Builder](https://img.shields.io/badge/React-19.1.0-blue)
 ![Vite](https://img.shields.io/badge/Vite-6.3.5-green)
-![License](https://img.shields.io/badge/License-MIT-yellow)
 
 ## ✨ Features
 
@@ -127,10 +126,6 @@ Changes in the form are immediately reflected in the CV preview, allowing users 
 3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
-
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 👨‍💻 Author
 
