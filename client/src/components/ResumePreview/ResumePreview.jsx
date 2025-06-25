@@ -8,8 +8,40 @@ import EducationSec from "./EducationSec";
 import SkillsSec from "./SkillsSec";
 import ProjectSec from "./ProjectsSec";
 import { formatDateRange } from "../../utils/dateUtils";
+import jsPDF from "jspdf";
+import html2canvas from "html2canvas";
 
 const ResumePreview = ({ resumeData }) => {
+  const downloadPDF = async () => {
+    const element = document.querySelector(".pdf-preview-content");
+
+    // Capture the element
+    const canvas = await html2canvas(element, {
+      scale: 2,
+      useCORS: true,
+      allowTaint: false,
+      backgroundColor: "#ffffff",
+      height: element.scrollHeight,
+      windowHeight: element.scrollHeight,
+    });
+
+    const imgData = canvas.toDataURL("image/png");
+
+    // Calculate dimensions
+    const imgWidth = 210; // A4 width in mm
+    const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+    // Create PDF with exact height needed
+    const pdf = new jsPDF({
+      orientation: "portrait",
+      unit: "mm",
+      format: [210, Math.min(imgHeight + 20, 297)], // Max A4 height or content height + padding
+    });
+
+    pdf.addImage(imgData, "PNG", 10, 10, imgWidth - 20, imgHeight);
+    pdf.save(`${resumeData.personalInfo.fullName}_Resume.pdf`);
+  };
+
   return (
     <>
       <div className="input-row-spaced button-row">
@@ -17,7 +49,7 @@ const ResumePreview = ({ resumeData }) => {
           text="📄 Download PDF"
           className="download-button"
           onClick={() => {
-            console.log("Download PDF clicked");
+            downloadPDF();
           }}
         />
 
@@ -47,41 +79,46 @@ const ResumePreview = ({ resumeData }) => {
             />
           </Section>
           <Section title="Professional Experience">
-            <ProfessionalExperienceSec
-              desc={
-                resumeData.experience.desc ||
-                "Led development of web applications using React and Node.js. Improved application performance by 40% through code optimization and database query improvements."
-              }
-              jobTitle={
-                resumeData.experience.jobTitle || "Senior Software Developer"
-              }
-              companyName={
-                resumeData.experience.companyName || "Tech Solutions Inc."
-              }
-              dateRange={formatDateRange(
-                resumeData.experience.startDate,
-                resumeData.experience.endDate,
-                "January 2022",
-                "Present"
-              )}
-            />
+            <div className="section-list">
+              {resumeData.experience.map((exp) => (
+                <div className="section-item" key={exp.id}>
+                  <ProfessionalExperienceSec
+                    desc={
+                      exp.desc ||
+                      "Led development of web applications using React and Node.js. Improved application performance by 40% through code optimization and database query improvements."
+                    }
+                    jobTitle={exp.jobTitle || "Senior Software Developer"}
+                    companyName={exp.companyName || "Tech Solutions Inc."}
+                    dateRange={formatDateRange(
+                      exp.startDate,
+                      exp.endDate,
+                      "January 2022",
+                      "Present"
+                    )}
+                  />
+                </div>
+              ))}
+            </div>
           </Section>
           <Section title="Education">
-            <EducationSec
-              title={
-                resumeData.education.degree ||
-                "Bachelor of Science in Computer Science"
-              }
-              name={
-                resumeData.education.schoolOrUniversity || "Tech University"
-              }
-              dateRange={formatDateRange(
-                resumeData.education.startDate,
-                resumeData.education.endDate,
-                "October 2020",
-                "October 2024"
-              )}
-            />
+            <div className="section-list">
+              {resumeData.education.map((edu) => (
+                <div className="section-item" key={edu.id}>
+                  <EducationSec
+                    title={
+                      edu.degree || "Bachelor of Science in Computer Science"
+                    }
+                    name={edu.schoolOrUniversity || "Tech University"}
+                    dateRange={formatDateRange(
+                      edu.startDate,
+                      edu.endDate,
+                      "October 2020",
+                      "October 2024"
+                    )}
+                  />
+                </div>
+              ))}
+            </div>
           </Section>
           <Section title="Skills">
             <SkillsSec
@@ -104,24 +141,30 @@ const ResumePreview = ({ resumeData }) => {
             />
           </Section>
           <Section title="Projects">
-            <ProjectSec
-              projectName={
-                resumeData.projects.projectName || "E-commerce Website"
-              }
-              projectTech={
-                resumeData.projects.projectTech &&
-                resumeData.projects.projectTech.trim() !== ""
-                  ? resumeData.projects.projectTech
-                      .split(",")
-                      .map((tech) => tech.trim())
-                  : ["React", "Node.js", "MongoDB", "Express"]
-              }
-              projectDesc={
-                resumeData.projects.projectDesc ||
-                "Developed a full-stack e-commerce application with user authentication, product management, and payment integration."
-              }
-              projectLink={resumeData.projects.projectLink || ""}
-            />
+            <div className="section-list">
+              {resumeData.projects.map((project) => (
+                <div className="section-item" key={project.id}>
+                  <ProjectSec
+                    projectName={
+                      project.projectName || "E-commerce Website"
+                    }
+                    projectTech={
+                      project.projectTech &&
+                      project.projectTech.trim() !== ""
+                        ? project.projectTech
+                            .split(",")
+                            .map((tech) => tech.trim())
+                        : ["React", "Node.js", "MongoDB", "Express"]
+                    }
+                    projectDesc={
+                      project.projectDesc ||
+                      "Developed a full-stack e-commerce application with user authentication, product management, and payment integration."
+                    }
+                    projectLink={project.projectLink || ""}
+                  />
+                </div>
+              ))}
+            </div>
           </Section>
         </div>
       </div>

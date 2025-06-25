@@ -11,11 +11,13 @@ const ProjectSec = ({ projectName, projectTech, projectDesc, projectLink }) => {
         {projectTech && projectTech.length > 0 ? projectTech.join(", ") : "N/A"}
       </span>
       <div className="section-description">{projectDesc}</div>
+      {projectLink && projectLink.trim() !== "" && (
       <div className="section-link">
         <a href={projectLink} target="_blank" rel="noopener noreferrer">
-          {projectLink ? projectLink : ""}
+          {projectLink}
         </a>
       </div>
+      )}
     </>
   );
 };

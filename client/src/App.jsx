@@ -13,50 +13,58 @@ function App() {
       location: "",
     },
     professionalSummary: "",
-    experience: {
-      jobTitle: "",
-      companyName: "",
-      startDate: "",
-      endDate: "",
-      desc: "",
-    },
+    experience: [
+      {
+        id: 1,
+        jobTitle: "",
+        companyName: "",
+        startDate: "",
+        endDate: "",
+        desc: "",
+      },
+    ],
     skills: [],
-    education: {
-      degree: "",
-      schoolOrUniversity: "",
-      startDate: "",
-      endDate: "",
-    },
-    projects: {
-      projectName: "",
-      projectTech: "",
-      projectDesc: "",
-      projectLink: "",
-    },
+    education: [
+      {
+        id: 1,
+        degree: "",
+        schoolOrUniversity: "",
+        startDate: "",
+        endDate: "",
+      },
+    ],
+    projects: [
+      {
+        id: 1,
+        projectName: "",
+        projectTech: "",
+        projectDesc: "",
+        projectLink: "",
+      },
+    ],
   });
 
   const updateResumeData = (section, newData) => {
     setResumeData((prevData) => ({
       ...prevData,
-      [section]: typeof newData === 'object' && !Array.isArray(newData) 
-      ? { ...prevData[section], ...newData } 
-      : newData,
+      [section]:
+        typeof newData === "object" && !Array.isArray(newData)
+          ? { ...prevData[section], ...newData }
+          : newData,
     }));
-  }
+  };
   return (
     <div className="fullscreen-bg">
       <Title />
       <div className="container">
         <div className="form-sidebar">
-          <ResumeForm 
-            resumeData={resumeData} 
+          <ResumeForm
+            resumeData={resumeData}
             updateResumeData={updateResumeData}
           />
         </div>
         <div className="form-sidebar">
-          <ResumePreview 
-            resumeData={resumeData}
-          />
+          <ResumePreview resumeData={resumeData} />
         </div>
       </div>
     </div>

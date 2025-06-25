@@ -285,7 +285,19 @@ body {
 
 .section-duration {
   font-size: 0.65rem;
-  color: gray
+  color: gray;
+}
+
+.section-item {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.section-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
 .skills-grid {
@@ -344,6 +356,57 @@ body {
 /* Empty state styling */
 .section-link:empty {
   display: none;
+}
+
+.entry-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.entry-number {
+  font-weight: 600;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+.add-more-button {
+  background-color: #4CAF50 !important;
+  color: white !important;
+  border: none !important;
+  margin-top: 1rem;
+  width: 100%;
+  padding: 0.75rem !important;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.add-more-button:hover {
+  background-color: #45a049 !important;
+}
+
+.remove-button {
+  background-color: #f44336 !important;
+  color: white !important;
+  border: none !important;
+  padding: 0.5rem 1rem !important;
+  font-size: 0.85rem;
+  border-radius: 4px;
+}
+
+.remove-button:hover {
+  background-color: #da190b !important;
+}
+
+.reuseable-border {
+  margin-bottom: 1.5rem;
+}
+
+.reuseable-border:last-of-type {
+  margin-bottom: 0;
 }
 
 
