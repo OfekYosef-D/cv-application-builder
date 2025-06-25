@@ -7,7 +7,7 @@ import Projects from "./Projects";
 import PersonalInformation from "./PersonalInformation";
 import Skills from "./Skills";
 
-const ResumeForm = () => {
+const ResumeForm = ({ resumeData, updateResumeData }) => {
   const [openSections, setOpenSections] = useState({
     personal: true,
     education: false,
@@ -30,19 +30,16 @@ const ResumeForm = () => {
         isOpen={openSections.personal}
         onToggle={() => toggleSection("personal")}
       >
-        <PersonalInformation />
-      </Accordion>
-
-      <Accordion
-        title="Education"
-        icon="🎓"
-        isOpen={openSections.education}
-        onToggle={() => toggleSection("education")}
-      >
-        <div className="reuseable-border">
-        <Education />
-        </div>
-        
+        <PersonalInformation
+          personalInfo={resumeData.personalInfo}
+          professionalSummary={resumeData.professionalSummary}
+          updatePersonalInfo={(newInfo) =>
+            updateResumeData("personalInfo", newInfo)
+          }
+          updateProfessionalSummary={(newSummary) =>
+            updateResumeData("professionalSummary", newSummary)
+          }
+        />
       </Accordion>
 
       <Accordion
@@ -52,9 +49,29 @@ const ResumeForm = () => {
         onToggle={() => toggleSection("experience")}
       >
         <div className="reuseable-border">
-        <ProfessionalExperience />
+          <ProfessionalExperience
+            experience={resumeData.experience}
+            updateExperience={(newExperience) =>
+              updateResumeData("experience", newExperience)
+            }
+          />
         </div>
-        
+      </Accordion>
+
+      <Accordion
+        title="Education"
+        icon="🎓"
+        isOpen={openSections.education}
+        onToggle={() => toggleSection("education")}
+      >
+        <div className="reuseable-border">
+          <Education
+            education={resumeData.education}
+            updateEducation={(newEducation) =>
+              updateResumeData("education", newEducation)
+            }
+          />
+        </div>
       </Accordion>
 
       <Accordion
@@ -63,7 +80,10 @@ const ResumeForm = () => {
         isOpen={openSections.skills}
         onToggle={() => toggleSection("skills")}
       >
-        <Skills />
+        <Skills
+          skills={resumeData.skills}
+          updateSkills={(newSkills) => updateResumeData("skills", newSkills)} 
+        />
       </Accordion>
 
       <Accordion
@@ -73,7 +93,10 @@ const ResumeForm = () => {
         onToggle={() => toggleSection("projects")}
       >
         <div className="reuseable-border">
-        <Projects />
+          <Projects
+            projects={resumeData.projects}
+            updateProjects={(newProjects) => updateResumeData("projects", newProjects)}
+          />
         </div>
       </Accordion>
     </div>

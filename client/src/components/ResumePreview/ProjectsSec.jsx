@@ -1,27 +1,21 @@
 import React from "react";
 import "../../styles/styles.css";
 
-const ProjectSec = ({
-  desc = "Built a full-stack e-commerce application with payment integration, user authentication, and admin dashboard. Handled 1000+ concurrent users.",
-  languages = [
-    "React",
-    "Node.js",
-    "MongoDB",
-  ],
-  title = "Tech Solutions Inc.",
-}) => {
+const ProjectSec = ({ projectName, projectTech, projectDesc, projectLink }) => {
   return (
     <>
       <div className="section-title-inside">
-        <span>{title}</span>
+        <span>{projectName}</span>
       </div>
-      {languages.map((lang, index) => (
-        <span key={index} className="section-name-inside">
-          {lang}
-          {index < languages.length - 1 ? ", " : ""}
-        </span>
-      ))}
-      <div className="section-description">{desc}</div>
+      <span className="section-name-inside">
+        {projectTech && projectTech.length > 0 ? projectTech.join(", ") : "N/A"}
+      </span>
+      <div className="section-description">{projectDesc}</div>
+      <div className="section-link">
+        <a href={projectLink} target="_blank" rel="noopener noreferrer">
+          {projectLink ? projectLink : ""}
+        </a>
+      </div>
     </>
   );
 };
